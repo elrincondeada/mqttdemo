@@ -1,15 +1,16 @@
-﻿using MQTTnet;
+﻿namespace DotNetMqtt.Server;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 internal class Program
 {
-    private static void Main(string[] args)
+    private static async Task Main(string[] args)
     {
-
-        var mqttFactory = new MqttFactory();
-
-          using (var mqttClient = mqttFactory.CreateMqttClient())
-          {
-
-          }
+        var hostBuilder = Host.CreateDefaultBuilder(args);
+        hostBuilder.ConfigureServices((hostContext, services) =>
+        {
+            services.AddHostedService<MqttServerWorker>();
+        });
+        await hostBuilder.RunConsoleAsync();
     }
 }

@@ -29,7 +29,6 @@ namespace DotNetMqtt.Avalonia.App
             await SuscribirMqtt();
         }
 
-
         public async Task SuscribirMqtt(CancellationToken cancellationToken = default)
         {
             var mqttFactory = new MqttFactory();

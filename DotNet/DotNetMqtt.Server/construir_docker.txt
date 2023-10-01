@@ -1,0 +1,2 @@
+docker build -t rinconada.dotnetmqtt.server .
+docker container run -p 1883:1883 rinconada.dotnetmqtt.server
